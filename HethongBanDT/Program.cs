@@ -1,7 +1,11 @@
+using Microsoft.EntityFrameworkCore;
+using HethongBanDT.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<ProductDBContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("dbconnect")), ServiceLifetime.Scoped);
 
 var app = builder.Build();
 
